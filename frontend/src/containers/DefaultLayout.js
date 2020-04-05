@@ -25,7 +25,7 @@ export const DefaultLayout = props => (
                     {routes}
                 </div>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>
+            <Footer style={{ textAlign: 'center', bottom: "0" }}>
                 Make by <b>MoneyMon</b> with <HeartTwoTone twoToneColor="#eb2f96" />
             </Footer>
         </Layout>
