@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { DefaultLayout } from './containers/DefaultLayout';
+import DefaultLayout  from './containers/DefaultLayout';
 
 import configureStore, { history } from './configureStore';
 const store = configureStore();

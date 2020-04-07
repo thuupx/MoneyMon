@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Input, Tooltip, Select, Checkbox, Button } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
@@ -53,14 +53,13 @@ const RegistrationForm = () => {
         </Form.Item>
     );
     return (
-      
         <Form
         {...formItemLayout}
         form={form}
         name="register"
         onFinish={onFinish}
         scrollToFirstError
-    >
+        >
         <Form.Item
             name="email"
             label="E-mail"
@@ -169,7 +168,7 @@ const RegistrationForm = () => {
             ]}
             {...tailFormItemLayout}
         >
-            <Checkbox>
+            <Checkbox style={{color: 'white' }}>
                 I have read the <a href="">agreement</a>
             </Checkbox>
         </Form.Item>
