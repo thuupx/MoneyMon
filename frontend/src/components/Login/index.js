@@ -27,25 +27,37 @@ const style = {
         background: 'linear-gradient(180deg, rgba(0,9,36,0.7262255243894433) 0%, rgba(9,83,121,0.7458333675266982) 25%, rgba(0,212,255,0.5945728633250176) 100%)'
     },
 }
+const rowStyle = {
+    height: 'calc(100vh - 146.1px)',
+    backgroundImage: 'url("https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg")',
+    backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
+    backgroundPosition: 'center'
+
+}
 const Login = props => {
     const authData = useSelector(state => state.authReducer);
+    console.log(authData);
+    
     if (authData.user) {
         return <Redirect to='/' />
     }
     else
         return (
-            <Spin spinning={authData.loading} tip="Loading...">
-                <Row justify="center" align='middle' style={{ height: 'calc(100vh - 146.1px)', backgroundImage:'url("https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg")'}} >
-                    <div style={props.isMobile() ? style.mobile : style.tablet}>
-                        <Col xs={{ span: 24 }} sm={{ span: 16 }} md={{ span: 8 }} lg={{ span: 6 }}>
-                            {authData.error ? <Alert type="error" message={authData.error.message} banner closable /> : null}
-                            <Divider orientation="center">Welcome to MoneyMon!</Divider>
-                            <hr />
-                            <LoginForm {...props} />
-                        </Col>
-                    </div>
-                </Row>
-            </Spin>
+            <Row justify="center" align='middle' style={rowStyle}> >
+                <div style={{
+                    width: '400px', padding: '40px', position: 'absolute', top: '50%', left: '50%',
+                    transform: 'translate(-50%,-50%)', background: 'none', textAlign: 'center',
+                    borderRadius: '20px', border: '1.5px solid #4caf50'
+                }}>
+                    <Spin spinning={authData.loading} tip="Loading...">
+                        {authData.error ? <Alert type="error" message={authData.error.message} banner closable /> : null}
+                        <Divider orientation="center" style={{ color: 'white' }}>Welcome to MoneyMon!</Divider>
+                        <hr />
+                        <LoginForm {...props} />
+                    </Spin>
+                </div>
+            </Row>
         )
 }
 export default withGetScreen(Login);
