@@ -1,1 +1,1 @@
-export const URL = "http://uit-ctf-time.herokuapp.com:80/api/v1";
+export const URL = "https://uit-ctf-time.herokuapp.com:80/api/v1";
