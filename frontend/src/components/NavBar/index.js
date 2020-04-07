@@ -3,7 +3,7 @@ import { findDOMNode } from 'react-dom';
 import TweenOne from 'rc-tween-one';
 import { Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import { LoginOutlined, UnlockOutlined } from '@ant-design/icons';
+import { LoginOutlined, HomeFilled, InfoCircleOutlined ,GithubFilled} from '@ant-design/icons';
 
 const Item = Menu.Item;
 
@@ -73,12 +73,10 @@ class Header extends React.Component {
                             defaultSelectedKeys={['0']}
                             theme={isMobile ? 'dark' : 'light'}
                         >
-                            <Item key="1"><Link to='/' style={{ color: 'white' }}>Home</Link></Item>
-                            <Item key="2"><Link to='/about' style={{ color: 'white' }}>About</Link></Item>
-                            <Menu.SubMenu title="Login" style={{ float: 'right' }}>
-                                <Item style={{ border: '5px' }}><LoginOutlined /><Link to='/login'>Login</Link></Item>
-                                <Item style={{ border: '5px' }}><UnlockOutlined /><Link to='/register'>Register</Link></Item>
-                            </Menu.SubMenu>
+                            <Item key="1"><HomeFilled /><Link to='/' style={{ color: 'white' }}>Home</Link></Item>
+                            <Item key="2"><InfoCircleOutlined /><Link to='/about' style={{ color: 'white' }}>About</Link></Item>
+                            <Item key="3"><GithubFilled /><a href='https://github.com/xuanthu01/MoneyMon' style={{ color: 'white' }}>Github</a></Item>
+                            <Item key="4"><LoginOutlined /><Link to='/login' style={{ color: 'white' }}>Login</Link></Item>
                         </Menu>
                     </TweenOne>
                 </div>

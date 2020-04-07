@@ -48,7 +48,7 @@ const Login = props => {
                 <div style={{
                     width: '400px', padding: '40px', position: 'absolute', top: '50%', left: '50%',
                     transform: 'translate(-50%,-50%)', background: 'none', textAlign: 'center',
-                    borderRadius: '20px', border: '1.5px solid #4caf50'
+                    borderRadius: '20px', border: '1.5px solid #4caf50',overflow: 'hidden'
                 }}>
                     <Spin spinning={authData.loading} tip="Loading...">
                         {authData.error ? <Alert type="error" message={authData.error.message} banner closable /> : null}
