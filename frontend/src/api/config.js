@@ -1,0 +1,1 @@
+export const URL = "http://uit-ctf-time.herokuapp.com:80/api/v1";

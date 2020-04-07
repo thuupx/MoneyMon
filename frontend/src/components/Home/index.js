@@ -1,12 +1,84 @@
 import React from 'react';
-import { Row, Col, Card, Carousel } from 'antd';
-import Meta from 'antd/lib/card/Meta';
-export default function Home(props) {
-    return (
-        <Carousel autoplay >
-            <img style={{ border: '5px' }} alt="example" width="100%" height="620px" src="https://images.unsplash.com/photo-1554672723-d42a16e533db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
-            <img style={{ border: '5px' }} alt="example" width="100%" height="620px" src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=995&q=80" />
-            <img style={{ border: '5px' }} alt="example" width="100%" height="620px" src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" />
-        </Carousel>
-    )
+import { enquireScreen } from 'enquire-js';
+
+import Banner0 from '../Banner';
+import Content0 from '../Contents/Content0';
+import Content7 from '../Contents/Content7';
+import Content13 from '../Contents/Content13';
+import {
+    BannerDataSource,
+    ContentDataSource,
+    Content70DataSource,
+    Content130DataSource,
+} from './data.source.js';
+
+import '../../less/main.less';
+
+let isMobile;
+enquireScreen((b) => {
+    isMobile = b;
+});
+
+const location = window.location;
+
+export default class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isMobile,
+            show: !location.port,
+        };
+    }
+
+    componentDidMount() {
+        enquireScreen((b) => {
+            this.setState({ isMobile: !!b });
+        });
+        if (location.port) {
+            setTimeout(() => {
+                this.setState({
+                    show: true,
+                });
+            }, 500);
+        }
+    }
+
+    render() {
+        const children = [
+            <Banner0
+                id="Banner0_0"
+                key="Banner0_0"
+                dataSource={BannerDataSource}
+                isMobile={this.state.isMobile}
+            />,
+            <Content0
+                id="Content0_0"
+                key="Content0_0"
+                dataSource={ContentDataSource}
+                isMobile={this.state.isMobile}
+            />,
+            <Content7
+                id="Content7_0"
+                key="Content7_0"
+                dataSource={Content70DataSource}
+                isMobile={this.state.isMobile}
+            />,
+            <Content13
+                id="Content13_0"
+                key="Content13_0"
+                dataSource={Content130DataSource}
+                isMobile={this.state.isMobile}
+            />
+        ];
+        return (
+            <div
+                className="templates-wrapper"
+                ref={(d) => {
+                    this.dom = d;
+                }}
+            >
+                {this.state.show && children}
+            </div>
+        );
+    }
 }

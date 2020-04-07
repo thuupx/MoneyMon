@@ -1,7 +1,7 @@
 import React from 'react';
 import Home from '../components/Home';
 import { Switch, Route } from 'react-router';
-import { Login } from '../components/Login';
+import Login from '../components/Login';
 import App from '../App';
 import Register from '../components/Register';
 const routes = (
