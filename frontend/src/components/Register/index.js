@@ -7,7 +7,6 @@ const rowStyle = {
     backgroundSize: 'cover',
     backgroundAttachment: 'fixed',
     backgroundPosition: 'center'
-
 }
 export default function Register(props) {
     return (
