@@ -1,10 +1,10 @@
 import React from 'react';
 import { enquireScreen } from 'enquire-js';
 
-import Banner0 from '../Banner';
-import Content0 from '../Contents/Content0';
-import Content7 from '../Contents/Content7';
-import Content13 from '../Contents/Content13';
+import Banner0 from '../../components/Banner';
+import Content0 from '../../components/Contents/Content0';
+import Content7 from '../../components/Contents/Content7';
+import Content13 from '../../components/Contents/Content13';
 import {
     BannerDataSource,
     ContentDataSource,
