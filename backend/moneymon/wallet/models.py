@@ -1,3 +1,9 @@
-from django.db import models
+# from django.db import models
+from mongoengine import Document, EmbeddedDocument, fields
+from django.utils import timezone
 
-# Create your models here.
+
+class Wallet(Document):
+    wallet_type = fields.StringField(max_length=255)
+    wallet_name = fields.StringField(max_length=1024)
+    description = fields.StringField(max_length=2048)
