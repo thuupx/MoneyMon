@@ -1,12 +1,14 @@
 import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import routes from '../routes';
-import { Layout } from 'antd';
-import {HeartTwoTone } from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
+import { HeartTwoTone, LaptopOutlined, UserOutlined, NotificationOutlined } from '@ant-design/icons';
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import { withGetScreen } from 'react-getscreen';
+import { useSelector } from 'react-redux';
+import LoggedLayout from './LoggedLayout';
 const { Content } = Layout;
 const NavDataSource = {
     wrapper: { className: 'header home-page-wrapper' },
@@ -34,6 +36,8 @@ const FooterDataSource = {
 };
 
 const DefaultLayout = props => {
+    const authData = useSelector(state => state.authReducer);
+    if (authData.user) return <LoggedLayout />
     const isMobile = props.isMobile();
     return (
         <ConnectedRouter history={props.history}>

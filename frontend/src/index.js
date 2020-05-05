@@ -4,9 +4,10 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import DefaultLayout  from './containers/DefaultLayout';
+import DefaultLayout from './containers/DefaultLayout';
 
 import configureStore, { history } from './configureStore';
+import LoggedLayout from './containers/LoggedLayout';
 const store = configureStore();
 ReactDOM.render(
     <Provider store={store}>
