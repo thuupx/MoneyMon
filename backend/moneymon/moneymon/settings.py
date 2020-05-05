@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import mongoengine
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fs)@0vthfw2yg6p*=7gk84t=_6u$f5!+enl4o!qk$0nbyk6n=x'
+SECRET_KEY = '06v_hrlr77iz1g)^&1wdqc7#mb8fcb*!uxv9x$%!3!2v!uq!p='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,12 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework_mongoengine',
-    'rest_framework.authtoken',
-    'djoser',
-    'users',
-    'wallet'
 ]
 
 MIDDLEWARE = [
@@ -85,32 +79,7 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-MONGODB_DATABASES = {
-    'default': {
-        "name": "moneymon",
-        "host": "localhost",
-        "port": 27017,
-    },
-    'remote': {
-        "name": "moneymon",
-        "host": "remote-server",
-        "port": 27017,
-    }
-}
 
-
-def check_environment():
-    return 'localhost'
-
-
-if check_environment() == 'localhost':
-    db = 'default'
-else:
-    db = 'remote`'
-mongoengine.connect(
-    db=MONGODB_DATABASES[db]['name'],
-    host=MONGODB_DATABASES[db]['host']
-)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -129,17 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-MONGOENGINE_USER_DOCUMENT = 'users.models.User'
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
-    ),
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

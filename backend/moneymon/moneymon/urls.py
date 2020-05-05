@@ -15,20 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.conf.urls import include, url
-
-from rest_framework.routers import DefaultRouter
-
-from wallet.views import WalletViewSet
-
-router = DefaultRouter(trailing_slash=False)
-
-router.register(r"wallet", WalletViewSet, r"wallet")
 
 urlpatterns = [
-    url('admin/', admin.site.urls),
-    # url(r'^auth/', include('djoser.urls')),
-    # url(r'^auth/', include('djoser.urls.authtoken')),
-    # url(r'^auth/', include('djoser.urls.jwt')),
-    url(r'^api/', include(router.urls)),
+    path('admin/', admin.site.urls),
 ]
