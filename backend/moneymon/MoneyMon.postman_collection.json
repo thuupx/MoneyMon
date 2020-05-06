@@ -1,0 +1,536 @@
+{
+	"info": {
+		"_postman_id": "1a90459f-fe66-44c2-967c-413def481094",
+		"name": "MoneyMon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "create token (aka Sign in)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "thupx",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "abc123@@",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "xuanthu404@gmail.com",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/auth/jwt/create",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth",
+								"jwt",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verify token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4NjY2NjM5LCJqdGkiOiJkYmJhMTAxYWI2NWI0MDQwYmJmNGU3MmI5MjYxZTI4ZiIsInVzZXJfaWQiOjF9.9imQ-HnTcVwktpJHhlqAyhJbw0zo-Nnpcubam9inYm0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/auth/jwt/verify",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth",
+								"jwt",
+								"verify"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "user_demo",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "abc123@@",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "user_demo@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "location",
+									"value": "10th Street",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/auth/users/",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Wallet",
+			"item": [
+				{
+					"name": "Get wallet of current user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4ODIxNzkwLCJqdGkiOiJhOWVkM2NlNWE3NjA0NzBkOThmYzc3Njg2ZTM5N2JkMiIsInVzZXJfaWQiOjF9.qZmbhVYcbf1dJyZVDZNn5gmUOsar6u7PcM27dmdNJHM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/wallet",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4ODIxNzkwLCJqdGkiOiJhOWVkM2NlNWE3NjA0NzBkOThmYzc3Njg2ZTM5N2JkMiIsInVzZXJfaWQiOjF9.qZmbhVYcbf1dJyZVDZNn5gmUOsar6u7PcM27dmdNJHM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "wallet_name",
+									"value": "wallet name",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "description of wallet ",
+									"type": "text"
+								},
+								{
+									"key": "balance",
+									"value": "10000",
+									"type": "text"
+								},
+								{
+									"key": "wallet_type",
+									"value": "CREDIT",
+									"description": "accept value : BASIC, CREDIT, CARD, DIGITAL",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/wallet",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"wallet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4ODIxNzkwLCJqdGkiOiJhOWVkM2NlNWE3NjA0NzBkOThmYzc3Njg2ZTM5N2JkMiIsInVzZXJfaWQiOjF9.qZmbhVYcbf1dJyZVDZNn5gmUOsar6u7PcM27dmdNJHM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "wallet_name",
+									"value": "wallet name",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "description of wallet updated",
+									"type": "text"
+								},
+								{
+									"key": "balance",
+									"value": "10000",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "wallet_type",
+									"value": "CREDIT",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/wallet/1",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"wallet",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete exist wallet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4ODIxNzkwLCJqdGkiOiJhOWVkM2NlNWE3NjA0NzBkOThmYzc3Njg2ZTM5N2JkMiIsInVzZXJfaWQiOjF9.qZmbhVYcbf1dJyZVDZNn5gmUOsar6u7PcM27dmdNJHM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/wallet/1",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"wallet",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "user profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4ODIxNzkwLCJqdGkiOiJhOWVkM2NlNWE3NjA0NzBkOThmYzc3Njg2ZTM5N2JkMiIsInVzZXJfaWQiOjF9.qZmbhVYcbf1dJyZVDZNn5gmUOsar6u7PcM27dmdNJHM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/auth/users/me/",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"auth",
+								"users",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "get transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4ODIxNzkwLCJqdGkiOiJhOWVkM2NlNWE3NjA0NzBkOThmYzc3Njg2ZTM5N2JkMiIsInVzZXJfaWQiOjF9.qZmbhVYcbf1dJyZVDZNn5gmUOsar6u7PcM27dmdNJHM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/transaction",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4ODIxNzkwLCJqdGkiOiJhOWVkM2NlNWE3NjA0NzBkOThmYzc3Njg2ZTM5N2JkMiIsInVzZXJfaWQiOjF9.qZmbhVYcbf1dJyZVDZNn5gmUOsar6u7PcM27dmdNJHM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Tiền thưởng ",
+									"type": "text"
+								},
+								{
+									"key": "action",
+									"value": "IN",
+									"description": "accept value : IN / OUT",
+									"type": "text"
+								},
+								{
+									"key": "category",
+									"value": "2",
+									"description": "category id",
+									"type": "text"
+								},
+								{
+									"key": "from_wallet",
+									"value": "3",
+									"description": "from wallet of user",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "1000000",
+									"description": "amount for perform action",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/transaction",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4ODIxNzkwLCJqdGkiOiJhOWVkM2NlNWE3NjA0NzBkOThmYzc3Njg2ZTM5N2JkMiIsInVzZXJfaWQiOjF9.qZmbhVYcbf1dJyZVDZNn5gmUOsar6u7PcM27dmdNJHM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}:{{port}}/api/transaction/45",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"transaction",
+								"45"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTg4ODIxNzkwLCJqdGkiOiJhOWVkM2NlNWE3NjA0NzBkOThmYzc3Njg2ZTM5N2JkMiIsInVzZXJfaWQiOjF9.qZmbhVYcbf1dJyZVDZNn5gmUOsar6u7PcM27dmdNJHM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "from_wallet",
+									"value": "5",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "amount",
+									"value": "0",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}:{{port}}/api/transaction/44",
+							"host": [
+								"{{url}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"api",
+								"transaction",
+								"44"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
