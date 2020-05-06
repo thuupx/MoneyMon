@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'djoser',
     'djmoney',
     'users',
-    'wallet'
+    'wallet', 
+    'transactions',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

@@ -1,10 +1,11 @@
 from django.contrib import admin
-from .models import Wallet
+from .models import Wallet, Categories
 
 
 class WalletAdmin(admin.ModelAdmin):
     pass
-    
 
 
-admin.site.register(Wallet, WalletAdmin)
+models = [Wallet, Categories]
+
+admin.site.register(models, WalletAdmin)
