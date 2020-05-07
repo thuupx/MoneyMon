@@ -26,7 +26,6 @@ const LoggedLayout = props => {
         setCollapsed(collapsed);
     };
     return (
-        <ConnectedRouter history={props.history}>
             <Layout>
                 <Header className="header">
                     <div className="logo" style={logoStyle} >
@@ -60,7 +59,7 @@ const LoggedLayout = props => {
                                     <PieChartOutlined />
                                     <span>Reports</span>
                                 </Menu.Item>
-                                <Divider />
+                                {/* <Divider /> */}
                                 <Menu.Item key="3">
                                     <ContainerOutlined />
                                     <span>Help</span>
@@ -88,7 +87,6 @@ const LoggedLayout = props => {
                     Make by <b>MoneyMon</b> with <HeartTwoTone twoToneColor="#eb2f96" />
                 </span></Footer>
             </Layout>
-        </ConnectedRouter>
 
     )
 }

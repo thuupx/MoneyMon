@@ -8,6 +8,7 @@ import { userLogin } from '../../actions/auth.action';
 const LoginForm = () => {
     const dispatch = useDispatch();
     const onFinish = user => {
+    console.log("LoginForm -> user", user)
         dispatch(userLogin(user));
     };
     return (
@@ -20,14 +21,14 @@ const LoginForm = () => {
             onFinish={onFinish}
         >
             <Form.Item
-                name="email"
+                name="username"
                 rules={[{
                     required: true,
-                    message: 'Please input your email!',
+                    message: 'Please input your username!',
                 },
                 ]}
             >
-                <Input prefix={<UserOutlined className="site-form-item-icon" />} type="email" placeholder="Email" />
+                <Input prefix={<UserOutlined className="site-form-item-icon" />} type="text" placeholder="Username" />
             </Form.Item>
             <Form.Item
                 name="password"

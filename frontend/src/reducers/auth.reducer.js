@@ -2,7 +2,7 @@ import * as types from '../constants/ActionsTypes';
 
 const initialState = {
     loading: false,
-    user: localStorage.getItem('user'),
+    token: localStorage.getItem('token'),
     error: null
 }
 const authReducer = (state = initialState, action) => {
@@ -19,14 +19,14 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 loading: false,
                 error: null,
-                user: action.payload
+                token: action.payload
             }
         case types.REQUEST_LOGIN_FAILURE:
             console.log("REQUEST_LOGIN_FAILURE with error", action.payload);
             return {
                 ...state,
                 loading: false,
-                user: null,
+                token: null,
                 error: action.payload
             }
         default:
