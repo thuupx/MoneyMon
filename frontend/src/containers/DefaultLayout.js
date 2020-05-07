@@ -37,7 +37,10 @@ const FooterDataSource = {
 
 const DefaultLayout = props => {
     const authData = useSelector(state => state.authReducer);
-    if (authData.user) return <LoggedLayout />
+    if (authData.token) return (
+        <ConnectedRouter history={props.history}>
+            <LoggedLayout />
+        </ConnectedRouter>)
     const isMobile = props.isMobile();
     return (
         <ConnectedRouter history={props.history}>
