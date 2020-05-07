@@ -16,7 +16,10 @@ class TransactionsCreateView(viewsets.ModelViewSet):
         from_wallet = self.request.data.get('from_wallet')
         serializer.save(category=category, from_wallet=from_wallet)
 
-    # def perform_update(self, serializer):
-    #     category = self.request.data.get('category')
-    #     from_wallet = self.request.data.get('from_wallet')
-    #     serializer.save(category=category, from_wallet=from_wallet)
+    def perform_update(self, serializer):
+        category = self.request.data.get('category')
+        from_wallet = self.request.data.get('from_wallet')
+        if category or from_wallet:
+            serializer.save(category=category, from_wallet=from_wallet)
+        else:
+            serializer.save()
