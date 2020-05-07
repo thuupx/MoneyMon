@@ -6,14 +6,16 @@ import App from '../App';
 import Register from '../components/Register';
 import Dashboard from '../pages/Dashboard';
 import Transactions from '../components/Transaction';
+import PublicRoute from './PublicRoute';
+import PrivateRoute from './PrivateRoute';
 const routes = (
     <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/login" component={Login} />
-        <Route path="/about" component={App} />
-        <Route path="/register" component={Register} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/transaction" component={Transactions} />
+        <PublicRoute component={Home} path="/" exact />
+        <PublicRoute restricted={true} path="/login" component={Login} />
+        <PublicRoute path="/about" component={App} />
+        <PublicRoute restricted={true} path="/register" component={Register} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/transaction" component={Transactions} />
     </Switch>
 )
 export default routes;
