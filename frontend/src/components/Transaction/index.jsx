@@ -1,77 +1,47 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FileAddFilled } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import { getTransactions } from '../../actions/transaction.action';
-import { Button, Row, Table, Tag } from 'antd';
+import { Button, Row, Table, Col } from 'antd';
+import columns from './tableColumns';
+import CreateTransactionModal from './CreateTransactionModal';
 
 const Transactions = props => {
     const dispatch = useDispatch()
     const transactionData = useSelector(state => state.transactionsReducer);
+    const [visible, setVisible] = useState(false);
+
+    const handleOk = payload => {
+        // dispatch() create transaction
+        console.log('create transaction with payload', payload);
+
+    }
 
     useEffect(() => {
         dispatch(getTransactions());
     }, []);
-    console.log("transactionData", transactionData)
-    const transactionex = {
-        "id": 44,
-        "action": "IN",
-        "action_name": "Cộng",
-        "category": "Bills & Utilities",
-        "from_wallet": "Test Wallet put",
-        "name": "Tiền thưởng",
-        "amount_currency": "VND",
-        "amount": "0.00",
-        "created_at": "2020-05-06T11:33:24.219474Z"
-    }
-    const dataSource = transactionData.transactions.map(transaction => ({ ...transaction, key: transaction.id }))
-    const columns = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-        },
-        {
-            title: 'Amount',
-            dataIndex: 'amount',
-            key: 'amount',
-            render: (text, row) => {
-                let color = 'volcano';
-                let sign = '-';
-                if (row.action === 'IN') {
-                    color = 'green';
-                    sign = '+';
-                }
-                return <Tag color={color}>
-                    {sign + text.toUpperCase()}
-                </Tag>
-            }
-        },
-        {
-            title: 'Currency',
-            dataIndex: 'amount_currency',
-            key: 'amount_currency',
-        },
-        {
-            title: 'Category',
-            dataIndex: 'category',
-            key: 'category',
-        },
-        {
-            title: 'From Wallet',
-            dataIndex: 'from_wallet',
-            key: 'from_wallet',
-        },
-        {
-            title: 'Created At',
-            dataIndex: 'created_at',
-            key: 'created_at',
-        },
-    ];
+    const dataSource = transactionData.transactions.length > 0
+        ? transactionData.transactions.map(transaction => ({ ...transaction, key: transaction.id }))
+        : []
 
     return (
-        <Row justify="center" align='top' style={{ height: 'calc(100vh - 139.1px)' }}>
-            <Table dataSource={dataSource} columns={columns} />;
-            <Button type="primary" icon={<FileAddFilled />}>Add Transaction</Button>
+        <Row justify="center" align='middle' style={{ height: 'calc(100vh - 139.1px)' }}>
+            <Col >
+                <h1>Transactions</h1>
+                <Button
+                    type="primary"
+                    icon={<FileAddFilled />}
+                    onClick={() => setVisible(true)}
+                >Create Transaction</Button>
+                <CreateTransactionModal visible={visible} loading={transactionData.loading} handleOk={handleOk} handleCancel={setVisible} />
+                <Table
+                    bordered={true}
+                    dataSource={dataSource}
+                    columns={columns}
+                    tableLayout='auto'
+                />
+            </Col>
+
 
         </Row>
     )
