@@ -21,3 +21,16 @@ export const getTransactionById = async id => {
     if (!json) throw json;
     else return json;
 }
+export const createTransaction = async (body) => {
+    const response = await fetch(`${HOST}/${URI.API_URI.TRANSACTION}`, {
+        method: 'post',
+        body: JSON.stringify(body),
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: 'Bearer ' + token().access
+        }
+    });
+    const json = await response.json();
+    if (!json.id) throw json;
+    else return json;
+}

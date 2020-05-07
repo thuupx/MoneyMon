@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { FileAddFilled } from '@ant-design/icons';
+import { FileAddFilled, CheckCircleOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTransactions } from '../../actions/transaction.action';
-import { Button, Row, Table, Col } from 'antd';
+import { getTransactions, createNewTransaction } from '../../actions/transaction.action';
+import { Button, Row, Table, Col, notification } from 'antd';
 import columns from './tableColumns';
 import CreateTransactionModal from './CreateTransactionModal';
 
@@ -14,7 +14,14 @@ const Transactions = props => {
     const handleOk = payload => {
         // dispatch() create transaction
         console.log('create transaction with payload', payload);
-
+        dispatch(createNewTransaction(payload));
+        notification.open({
+            message: 'Created',
+            description:
+                'Create a new transaction successfully!',
+            icon: <CheckCircleOutlined style={{ color: 'green' }} />,
+        });
+        setVisible(false);
     }
 
     useEffect(() => {
