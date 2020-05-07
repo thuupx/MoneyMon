@@ -8,6 +8,9 @@ const AUTH_URI = {
     JWT: "auth/jwt",
     USER: "auth/users",
 }
+const headers = new Headers();
+headers.append("Content-Type", "application/x-www-form-urlencoded");
+export { headers }
 const URI = { API_URI, AUTH_URI }
 
 export default URI
