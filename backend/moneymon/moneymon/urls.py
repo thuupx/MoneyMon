@@ -22,8 +22,9 @@ from transactions import views as transaction_views
 router = routers.DefaultRouter(trailing_slash=False)
 
 router.register(r'wallet', wallet_views.WalletCreateView, 'wallet')
-router.register(r'transaction',transaction_views.TransactionsCreateView,'transaction')
-
+router.register(
+    r'transaction', transaction_views.TransactionsCreateView, 'transaction')
+router.register(r'category', wallet_views.CategoryView, 'category')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('djoser.urls')),

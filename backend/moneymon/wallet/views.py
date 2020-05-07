@@ -3,10 +3,9 @@ from rest_framework.generics import (
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets, status
 from rest_framework.response import Response
-from .models import Wallet
+from .models import Wallet, Categories
 from .permissions import IsOwnerWalletOrReadOnly
-from .serializers import WalletSerializer
-
+from .serializers import WalletSerializer, CategoriesSerializer
 
 
 class WalletCreateView(viewsets.ModelViewSet):
@@ -21,10 +20,17 @@ class WalletCreateView(viewsets.ModelViewSet):
         return qs
 
     def destroy(self, request, *args, **kwargs):
-            instance = self.get_object()
-            self.perform_destroy(instance)
-            return Response(status=status.HTTP_200_OK)
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_200_OK)
 
     def perform_destroy(self, instance):
         instance.delete()
 
+
+class CategoryView(viewsets.ReadOnlyModelViewSet):
+    serializer_class = CategoriesSerializer
+
+    def get_queryset(self):
+        qs = Categories.objects.all()
+        return qs
