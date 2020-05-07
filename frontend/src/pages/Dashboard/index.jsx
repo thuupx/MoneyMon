@@ -4,7 +4,8 @@ import { Row } from 'antd';
 const Dashboard = props => {
     return (
         <Row justify="start" align='top' style={{ height: 'calc(100vh - 146.1px)' }}>
-            <Sider />
+            {/* <Sider /> */}
+            Dashboard component
         </Row>
     )
 }
