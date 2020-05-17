@@ -14,7 +14,7 @@ export default function alert(state = {}, action) {
         case alertConstants.ERROR:
             notification["error"]({
                 message: "Error",
-                description: "Register error: " + action.message
+                description: "Error occurred " + action.message
             });
             console.log("error");
             return {
