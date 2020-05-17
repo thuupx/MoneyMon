@@ -1,5 +1,4 @@
 import React from 'react';
-import Sider from '../../components/Sider';
 import { Row } from 'antd';
 const Dashboard = props => {
     return (

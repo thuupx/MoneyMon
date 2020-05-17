@@ -1,32 +1,8 @@
 import React from 'react';
 import LoginForm from './LoginForm';
-import { Row, Col, Divider, Spin, Alert } from 'antd';
+import { Row, Divider, Spin, Alert } from 'antd';
 import { withGetScreen } from 'react-getscreen';
 import { useSelector } from 'react-redux';
-import { Redirect } from 'react-router';
-const style = {
-    mobile: {
-        border: '1px solid #ccc',
-        borderRadius: '20px',
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'gray',
-        padding: '30px 20px 30px 20px',
-        background: 'linear-gradient(180deg, rgba(0,9,36,0.7262255243894433) 0%, rgba(9,83,121,0.7458333675266982) 25%, rgba(0,212,255,0.5945728633250176) 100%)'
-
-    },
-    tablet: {
-        border: '1px solid #ccc',
-        borderRadius: '20px',
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-        padding: '30px 20px 30px 20px',
-        margin: '0 200px 0 200px',
-        background: 'linear-gradient(180deg, rgba(0,9,36,0.7262255243894433) 0%, rgba(9,83,121,0.7458333675266982) 25%, rgba(0,212,255,0.5945728633250176) 100%)'
-    },
-}
 const rowStyle = {
     height: 'calc(100vh - 146.1px)',
     backgroundImage: 'url("https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg")',

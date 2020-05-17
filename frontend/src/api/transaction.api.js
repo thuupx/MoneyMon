@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-import URI, { HOST, headers } from './config';
+import URI, { HOST } from './config';
 import { token } from '../utils/auth.util';
 export const getAllTransactions = async () => {
     const response = await fetch(`${HOST}/${URI.API_URI.TRANSACTION}`, {

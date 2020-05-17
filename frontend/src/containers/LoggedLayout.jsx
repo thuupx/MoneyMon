@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
-import { useHistory } from "react-router-dom";
 
 import {
     HeartTwoTone, PieChartOutlined,
@@ -23,7 +22,6 @@ const logoStyle = {
     float: "left",
 }
 const LoggedLayout = props => {
-    const history = useHistory();
     const [collapsed, setCollapsed] = useState(false);
     const onCollapse = collapsed => {
         setCollapsed(collapsed);

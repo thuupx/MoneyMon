@@ -7,7 +7,6 @@ import * as serviceWorker from './serviceWorker';
 import DefaultLayout from './containers/DefaultLayout';
 
 import configureStore, { history } from './configureStore';
-import LoggedLayout from './containers/LoggedLayout';
 const store = configureStore();
 ReactDOM.render(
     <Provider store={store}>

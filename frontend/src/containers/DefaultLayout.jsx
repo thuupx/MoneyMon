@@ -1,8 +1,8 @@
 import React from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import routes from '../routes';
-import { Layout, Menu } from 'antd';
-import { HeartTwoTone, LaptopOutlined, UserOutlined, NotificationOutlined } from '@ant-design/icons';
+import { Layout } from 'antd';
+import { HeartTwoTone } from '@ant-design/icons';
 
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
