@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tag } from 'antd';
+import { formatNumberToMoney } from '../../utils/transaction.util';
 
 const columns = [
     {
@@ -19,7 +20,7 @@ const columns = [
                 sign = '+';
             }
             return <Tag color={color}>
-                {sign + text.toUpperCase()}
+                {sign + formatNumberToMoney(text)}
             </Tag>
         }
     },
