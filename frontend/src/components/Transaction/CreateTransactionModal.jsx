@@ -97,7 +97,10 @@ const CreateTransactionModal = props => {
                                 value={w.id}
                                 key={w.id}
                             >
-                                {w.wallet_name}
+                                <div style={{float: 'left'}}>
+                                    <div style={{color: '#000'}}>{w.wallet_name}</div>
+                        <div style={{fontSize: '14'}} >Balance: {w.balance} {w.balance_currency}</div>
+                                </div>
                             </Select.Option>
                         )
                     })}
