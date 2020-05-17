@@ -4,12 +4,12 @@ import { Layout, Menu } from 'antd';
 import {
     HeartTwoTone, PieChartOutlined,
     ContainerOutlined,
-    MailOutlined,
     TransactionOutlined,
+    BarChartOutlined,
 } from '@ant-design/icons';
 
 import routes from '../routes';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { logout } from '../utils/auth.util';
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
@@ -18,8 +18,8 @@ const logoStyle = {
     justifyContent: 'center',
     width: "148px",
     height: "60px",
-    // margin: " 16px 28px 16px 0",
     float: "left",
+    cursor: 'pointer'
 }
 const LoggedLayout = props => {
     const [collapsed, setCollapsed] = useState(false);
@@ -30,10 +30,11 @@ const LoggedLayout = props => {
         logout();
         window.location.reload()
     }
+    const history = useHistory();
     return (
         <Layout>
             <Header className="header">
-                <div className="logo" style={logoStyle} >
+                <div className="logo" onClick={() => history.push('/dashboard')} style={logoStyle} >
                     <img width="64px" height="64px" src="https://i.ibb.co/dfx6G33/logo.png" alt="img" />
                 </div>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
@@ -73,15 +74,14 @@ const LoggedLayout = props => {
                                 key="sub1"
                                 title={
                                     <span>
-                                        <MailOutlined />
-                                        <span>Navigation One</span>
+                                        <BarChartOutlined />
+                                        <span>Statistic</span>
                                     </span>
                                 }
                             >
-                                <Menu.Item key="5">Option 5</Menu.Item>
-                                <Menu.Item key="6">Option 6</Menu.Item>
-                                <Menu.Item key="7">Option 7</Menu.Item>
-                                <Menu.Item key="8">Option 8</Menu.Item>
+                                <Menu.Item key="day">Day</Menu.Item>
+                                <Menu.Item key="week">Week</Menu.Item>
+                                <Menu.Item key="month">Month</Menu.Item>
                             </SubMenu>
                         </Menu>
                     </Sider>
