@@ -1,7 +1,7 @@
 import fetch from 'cross-fetch';
 import URI, { HOST, headers } from './config';
 export const requestLogin = async (body) => {
-    var urlencoded = new URLSearchParams();
+    let urlencoded = new URLSearchParams();
     urlencoded.append("username", body.username);
     urlencoded.append("password", body.password);
     const response = await fetch(`${HOST}/${URI.AUTH_URI.JWT}/create`, {
@@ -11,5 +11,17 @@ export const requestLogin = async (body) => {
     });
     const json = await response.json();
     if (!json.access) throw json;
+    else return json;
+}
+export const requestRegistration = async body => {
+    let urlencoded = new URLSearchParams();
+    Object.keys(body).forEach(key => urlencoded.append(key, body[key]));
+    const response = await fetch(`${HOST}/${URI.AUTH_URI.USER}/`, {
+        method: 'post',
+        body: urlencoded,
+        headers: headers
+    });
+    const json = await response.json();
+    if (!json.id) throw json;
     else return json;
 }
