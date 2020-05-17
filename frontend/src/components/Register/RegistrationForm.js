@@ -2,7 +2,8 @@ import React from 'react';
 import { Form, Input, Tooltip, Checkbox, Button } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../../actions/registration.action';
 const formItemLayout = {
     labelCol: {
         xs: {
@@ -36,8 +37,10 @@ const tailFormItemLayout = {
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
+    const dispatch = useDispatch();
     const onFinish = values => {
         console.log('Received values of form: ', values);
+        dispatch(registerUser(values));
     };
     return (
         <Form
@@ -72,6 +75,7 @@ const RegistrationForm = () => {
                         required: true,
                         message: 'Please input a valid password!',
                         pattern: '',
+                        min: 8
                     },
                 ]}
                 hasFeedback
@@ -141,7 +145,7 @@ const RegistrationForm = () => {
                 {...tailFormItemLayout}
             >
                 <Checkbox style={{ color: 'white' }}>
-                    I have read the <a href="">agreement</a>
+                    I have read the agreement
                 </Checkbox>
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
