@@ -103,6 +103,5 @@ const footerStyle = {
     position: "fixed",
     bottom: 0,
     left: 0,
-    textAlign: 'center'
 }
 export default LoggedLayout;
