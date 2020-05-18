@@ -28,9 +28,9 @@ class WalletCreateView(viewsets.ModelViewSet):
         instance.delete()
 
 
-class CategoryView(viewsets.ReadOnlyModelViewSet):
+class CategoryView(viewsets.ModelViewSet):
     serializer_class = CategoriesSerializer
-
+    
     def get_queryset(self):
         qs = Categories.objects.all()
         return qs
