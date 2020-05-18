@@ -40,7 +40,7 @@ const LoggedLayout = props => {
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                     <Menu.Item key="1">My Account</Menu.Item>
                     <Menu.Item key="2">My Wallet</Menu.Item>
-                    <Menu.Item key="3">Categories</Menu.Item>
+                    <Menu.Item key="3" onClick={() => history.push('/category')}>Categories</Menu.Item>
                     <Menu.Item key="4" onClick={() => onLogout()} style={{ float: 'right' }}>Logout</Menu.Item>
                 </Menu>
             </Header>
@@ -88,11 +88,21 @@ const LoggedLayout = props => {
                     <Content style={{ padding: '0 24px', minHeight: 280 }}>{routes}</Content>
                 </Layout>
             </Content>
-            <Footer style={{ textAlign: 'center' }}><span>
+            <Footer style={footerStyle}><span>
                 Make by <b>MoneyMon</b> with <HeartTwoTone twoToneColor="#eb2f96" />
             </span></Footer>
         </Layout>
 
     )
+}
+const footerStyle = {
+    width: "100%",
+    padding: "0 24px",
+    lineHeight: "80px",
+    textAlign: "center",
+    position: "fixed",
+    bottom: 0,
+    left: 0,
+    textAlign: 'center'
 }
 export default LoggedLayout;

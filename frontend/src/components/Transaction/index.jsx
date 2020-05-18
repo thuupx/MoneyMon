@@ -25,7 +25,7 @@ const Transactions = props => {
         : []
 
     return (
-        <Row justify="center" align='middle' style={{ height: 'calc(100vh - 139.1px)' }}>
+        <Row justify="center" align='middle' style={{ height: 'calc(100vh - 140px)' }}>
             <Col >
                 <h1>Transactions</h1>
                 <Button
