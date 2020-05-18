@@ -31,3 +31,22 @@ export const getAllUserWallets = async () => {
         throw error;
     }
 }
+export const createCategory = async body => {
+    try {
+        const response = await fetch(`${HOST}/${URI.API_URI.CATEGORY}`, {
+            method: 'post',
+            body: JSON.stringify(body),
+            headers: {
+                'Content-Type': 'application/json',
+                authorization: 'Bearer ' + token().access
+            }
+        });
+        const json = await response.json();
+
+        if (!json) throw json;
+        else return json;
+    } catch (error) {
+        console.error("error:",error);
+        throw error;
+    }
+}
