@@ -39,7 +39,7 @@ const LoggedLayout = props => {
                 </div>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
                     <Menu.Item key="1">My Account</Menu.Item>
-                    <Menu.Item key="2">My Wallet</Menu.Item>
+                    <Menu.Item key="2" onClick={() => history.push('/wallet')}>My Wallet</Menu.Item>
                     <Menu.Item key="3" onClick={() => history.push('/category')}>Categories</Menu.Item>
                     <Menu.Item key="4" onClick={() => onLogout()} style={{ float: 'right' }}>Logout</Menu.Item>
                 </Menu>
