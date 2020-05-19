@@ -11,10 +11,15 @@ class TransactionsCreateView(viewsets.ModelViewSet):
     serializer_class = TransactionsSerializer
     permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        qs = Transactions.objects.filter(user=self.request.user)
+        return qs
+
     def perform_create(self, serializer):
         category = self.request.data.get('category')
         from_wallet = self.request.data.get('from_wallet')
-        serializer.save(category=category, from_wallet=from_wallet)
+        serializer.save(category=category,
+                        from_wallet=from_wallet, user=self.request.user)
 
     def perform_update(self, serializer):
         category = self.request.data.get('category')

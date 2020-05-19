@@ -11,7 +11,8 @@ class TransactionsSerializer(serializers.ModelSerializer):
     action_name = serializers.SerializerMethodField()
     category = serializers.StringRelatedField()
     from_wallet = serializers.StringRelatedField()
-
+    user = serializers.PrimaryKeyRelatedField(
+        default=serializers.CurrentUserDefault(), read_only=True)
     class Meta:
         model = Transactions
         fields = '__all__'
