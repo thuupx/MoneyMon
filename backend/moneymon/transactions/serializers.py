@@ -21,7 +21,8 @@ class TransactionsSerializer(serializers.ModelSerializer):
         return obj.get_action_display()
 
     def create(self, validated_data):
-        category_id = validated_data.get('category')
+        category = validated_data.get('category') 
+        category_id = category if category != None else 1
         wallet_id = validated_data.get('from_wallet')
         found_category = Categories.objects.filter(id=int(category_id))[0]
         found_wallet = Wallet.objects.filter(id=int(wallet_id))[0]
