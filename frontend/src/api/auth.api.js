@@ -14,8 +14,7 @@ export const requestLogin = async (body) => {
     else return json;
 }
 export const requestRegistration = async body => {
-    let urlencoded = new URLSearchParams();
-    Object.keys(body).forEach(key => urlencoded.append(key, body[key]));
+    const urlencoded = new URLSearchParams(Object.entries(body));
     const response = await fetch(`${HOST}/${URI.AUTH_URI.USER}/`, {
         method: 'post',
         body: urlencoded,
