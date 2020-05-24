@@ -40,13 +40,14 @@ const CreateWalletModal = props => {
         try {
             const response = await createWallet(payload);
             addNewWallet(response);
-            message.success("Created wallet successfully with name " + response.wallet_name);
+            const { id, wallet_name, balance } = response;
+            message.success(`Created wallet successfully with name ${response.wallet_name}`);
             const transaction = {
                 category: 1,
-                from_wallet: response.id,
+                from_wallet: id,
                 action: "IN",
                 amount: balance,
-                name: "Init Wallet " + response.wallet_name
+                name: `Init wallet ${wallet_name}`
             }
             dispatch(createNewTransaction(transaction));
         } catch (error) {
