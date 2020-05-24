@@ -1,3 +1,7 @@
+#Work spaces
+
+.vscode
+
 # --------------------- BACKEND ------------------------
 __pycache__
 migrations
