@@ -27,7 +27,8 @@ router.register(
 router.register(r'category', wallet_views.CategoryView, 'category')
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    path(r'auth/', include('djoser.urls')),
-    path(r'auth/', include('djoser.urls.jwt')),
+    # path(r'auth/', include('djoser.urls')),
+    path(r'auth/', include('rest_framework_social_oauth2.urls')),
+    # path(r'auth/', include('djoser.urls.jwt')),
     path(r'api/', include(router.urls))
 ]

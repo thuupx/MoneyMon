@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c6bbe5b626e13341cca2234f137a6b0d529f81be1c72ba12b9631b38b72086af"
+            "sha256": "a38aa2adabeb5d46bd416750b044c0c3e4742f9fef9991d746c5dafe4735e9e6"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -117,6 +117,13 @@
             "index": "pypi",
             "version": "==2.2.12"
         },
+        "django-braces": {
+            "hashes": [
+                "sha256:83705b78948de00804bfacf40c315d001bb39630f35bbdd8588211c2d5b4d43f",
+                "sha256:a6d9b34cf3e4949635e54884097c30410d7964fc7bec7231445ea7079b8c5722"
+            ],
+            "version": "==1.14.0"
+        },
         "django-cors-headers": {
             "hashes": [
                 "sha256:48d267c10d11d8e17805bf896071c0a3e8efb6f79f6634a90e6faac4c2f8a1a0",
@@ -132,6 +139,20 @@
             ],
             "index": "pypi",
             "version": "==1.1"
+        },
+        "django-oauth-toolkit": {
+            "hashes": [
+                "sha256:28508f83385ab4313936ddedfb310eaa8a1dcb737153d2956383ce47e75c2fab",
+                "sha256:d5a1044af9419ddc048390c5974777ea97874e5b78e33c609e17eebb8423afb2"
+            ],
+            "version": "==1.3.2"
+        },
+        "django-rest-framework-social-oauth2": {
+            "hashes": [
+                "sha256:c9a297b636ffd37957c6146280e99ead41e6aca37bcb995e3d52d65eefbca0b7"
+            ],
+            "index": "pypi",
+            "version": "==1.1.0"
         },
         "django-sslserver": {
             "hashes": [

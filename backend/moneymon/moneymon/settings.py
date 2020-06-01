@@ -45,12 +45,16 @@ INSTALLED_APPS = [
     'wallet',
     'transactions',
     'sslserver',
-    'mfa',
-
+    'oauth2_provider',
+    'social_django',
+    'rest_framework_social_oauth2',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+        # django-oauth-toolkit >= 1.0.0
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+        'rest_framework_social_oauth2.authentication.SocialAuthentication',
     ),
     'DEFAULT_MODEL_SERIALIZER_CLASS':
         'rest_framework.serializers.ModelSerializer',
@@ -84,30 +88,25 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
-MFA_UNALLOWED_METHODS=()   # Methods that shouldn't be allowed for the user
-MFA_LOGIN_CALLBACK=""      # A function that should be called by username to login the user in session
-MFA_RECHECK=True           # Allow random rechecking of the user
-MFA_RECHECK_MIN=10         # Minimum interval in seconds
-MFA_RECHECK_MAX=30         # Maximum in seconds
-MFA_QUICKLOGIN=True        # Allow quick login for returning users by provide only their 2FA
-MFA_HIDE_DISABLE=('FIDO2',)     # Can the user disable his key (Added in 1.2.0).
-# MFA_OWNED_BY_ENTERPRISE = False # Who ownes security keys   
-
-TOKEN_ISSUER_NAME="MoneyMon"      #TOTP Issuer name
-
-U2F_APPID="https://localhost"    #URL For U2F
-FIDO_SERVER_ID=u"localehost"      # Server rp id for FIDO2, it the full domain of your project
-FIDO_SERVER_NAME=u"MoneyMon"
-FIDO_LOGIN_URL= "https://localhost"#BASE_URL
-
 
 WSGI_APPLICATION = 'moneymon.wsgi.application'
 
 AUTH_USER_MODEL = 'users.User'
+AUTHENTICATION_BACKENDS = (
+    'rest_framework_social_oauth2.backends.DjangoOAuth2',
+    # Google OAuth2
+    'social_core.backends.google.GoogleOAuth2',
+    # Facebook OAuth2
+    'social_core.backends.facebook.FacebookAppOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -164,3 +163,26 @@ PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
+
+# Facebook configuration
+SOCIAL_AUTH_FACEBOOK_KEY = '861282047725896'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c88679432a908d831107e0eb7bfaa6f4'
+
+# Define SOCIAL_AUTH_FACEBOOK_SCOPE to get extra permissions from Facebook.
+# Email is not sent by default, to get it, you must request the email permission.
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email'
+}
+# Google configuration
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '474894401938-hib8j06eov4t7fu3mpt9a7cc6if0bf8h.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'Gg_xNIEvsQ-df2WPvGhZkF0U'
+
+# Define SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE to get extra permissions from Google.
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    'https://www.googleapis.com/auth/userinfo.email',
+    'https://www.googleapis.com/auth/userinfo.profile',
+]

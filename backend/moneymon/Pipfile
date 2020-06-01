@@ -16,6 +16,7 @@ django-cors-headers = "*"
 django-sslserver = "*"
 django-money = "*"
 social-auth-app-django = "*"
+django-rest-framework-social-oauth2 = "*"
 
 [requires]
 python_version = "3.8"
