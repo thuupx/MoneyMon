@@ -11,6 +11,11 @@ djoser = "*"
 djangorestframework = "*"
 djongo = "*"
 psycopg2 = "*"
+django = "*"
+django-cors-headers = "*"
+django-sslserver = "*"
+django-money = "*"
+social-auth-app-django = "*"
 
 [requires]
 python_version = "3.8"

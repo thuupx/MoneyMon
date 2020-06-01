@@ -26,8 +26,8 @@ router.register(
     r'transaction', transaction_views.TransactionsCreateView, 'transaction')
 router.register(r'category', wallet_views.CategoryView, 'category')
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('auth/', include('djoser.urls')),
-    path('auth/', include('djoser.urls.jwt')),
-    path('api/', include(router.urls))
+    path(r'admin/', admin.site.urls),
+    path(r'auth/', include('djoser.urls')),
+    path(r'auth/', include('djoser.urls.jwt')),
+    path(r'api/', include(router.urls))
 ]

@@ -14,12 +14,7 @@ import os
 from datetime import timedelta
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-import mongoengine
 
-mongoengine.connect(
-    db="moneymon_db",
-    host="localhost"
-)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -43,13 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework_mongoengine',
     'djoser',
     'corsheaders',
     'djmoney',
     'users',
-    'wallet', 
+    'wallet',
     'transactions',
+    'sslserver',
+    'mfa',
+
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -91,6 +88,22 @@ TEMPLATES = [
         },
     },
 ]
+MFA_UNALLOWED_METHODS=()   # Methods that shouldn't be allowed for the user
+MFA_LOGIN_CALLBACK=""      # A function that should be called by username to login the user in session
+MFA_RECHECK=True           # Allow random rechecking of the user
+MFA_RECHECK_MIN=10         # Minimum interval in seconds
+MFA_RECHECK_MAX=30         # Maximum in seconds
+MFA_QUICKLOGIN=True        # Allow quick login for returning users by provide only their 2FA
+MFA_HIDE_DISABLE=('FIDO2',)     # Can the user disable his key (Added in 1.2.0).
+# MFA_OWNED_BY_ENTERPRISE = False # Who ownes security keys   
+
+TOKEN_ISSUER_NAME="MoneyMon"      #TOTP Issuer name
+
+U2F_APPID="https://localhost"    #URL For U2F
+FIDO_SERVER_ID=u"localehost"      # Server rp id for FIDO2, it the full domain of your project
+FIDO_SERVER_NAME=u"MoneyMon"
+FIDO_LOGIN_URL= "https://localhost"#BASE_URL
+
 
 WSGI_APPLICATION = 'moneymon.wsgi.application'
 
@@ -128,7 +141,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(weeks=4),
 }
 
 # Internationalization
@@ -147,5 +160,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
