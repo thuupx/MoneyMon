@@ -1,9 +1,11 @@
 import React from 'react';
 import { Form, Input, Tooltip, Checkbox, Button } from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { QuestionCircleOutlined, FacebookFilled } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../actions/registration.action';
+import FacebookLoginComponent from '../shared/FacebookLogin';
+import { userLogin } from '../../actions/auth.action';
 const formItemLayout = {
     labelCol: {
         xs: {
@@ -42,6 +44,17 @@ const RegistrationForm = () => {
         console.log('Received values of form: ', values);
         dispatch(registerUser(values));
     };
+    const fbCallback = (response) => {
+        console.log("register user: ", response);
+        const payload = {
+            token:response.accessToken,
+            client_id: "5sjHf8d4ddmWFVczDmC9O1eaalI6V4D47ibtnvMs",
+            client_secret: "BRlD1jdoe8R85cUKgIcdKQx2J0qblrgFmOftC5hM7jd4B5iqLCMhE37WkhX5Mq8RKSujkm5BX5S53glmX76xruzkZ176rUqQ0gE0ZV9egOT6Uh7o8hHptArL68vOjCb4",
+            grant_type: "convert_token",
+            backend:"facebook"
+        }
+        dispatch(userLogin(payload));
+    }
     return (
         <Form
             {...formItemLayout}
@@ -152,6 +165,20 @@ const RegistrationForm = () => {
                 <Button type="primary" htmlType="submit">
                     Register
             </Button> or <Link to='/login'>Login now!</Link>
+            </Form.Item>
+            <Form.Item {...tailFormItemLayout}>
+                <FacebookLoginComponent
+                    callback={fbCallback}
+                    render={renderProps => (
+                        <Button 
+                        ghost type="primary" 
+                        onClick={renderProps.onClick} 
+                        className="login-form-button"
+                        icon={<FacebookFilled />}
+                        >
+                            Register with Facebook
+                        </Button>)}
+                />
             </Form.Item>
         </Form>
     );
