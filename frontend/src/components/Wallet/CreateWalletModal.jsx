@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Input, Select, Modal, Button, message, notification } from 'antd';
-import { CURRENCIES } from '../../constants/currency';
+import { CURRENCIES, w_types } from '../../constants/currency';
 import MoneyInput from '../Transaction/MoneyInput';
 import { createWallet } from '../../api/wallet.api';
 import { createNewTransaction } from '../../actions/transaction.action';
+
 
 const CreateWalletModal = props => {
     const { visible, setVisible, addNewWallet } = props;
@@ -15,7 +16,6 @@ const CreateWalletModal = props => {
     const [balanceCurrency, setBalanceCurrency] = useState('');
     const [loading, setLoading] = useState(false)
     const dispatch = useDispatch();
-    const w_types = ["BASIC", "DIGITAL", "CARD", "CREDIT"]
     const handleOk = async () => {
         if (walletName === "") {
             message.error("Please enter a wallet name");

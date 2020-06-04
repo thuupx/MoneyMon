@@ -6,14 +6,15 @@ import { useDispatch } from 'react-redux';
 import { userLogin } from '../../actions/auth.action';
 import FacebookLoginComponent from '../shared/FacebookLogin';
 import GoogleLoginComponent from '../shared/GoogleLogin';
+import { CLIENT } from '../../constants/client-secret';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
     const onFinish = user => {
         const payload = {
             ...user,
-            client_id: "5sjHf8d4ddmWFVczDmC9O1eaalI6V4D47ibtnvMs",
-            client_secret: "BRlD1jdoe8R85cUKgIcdKQx2J0qblrgFmOftC5hM7jd4B5iqLCMhE37WkhX5Mq8RKSujkm5BX5S53glmX76xruzkZ176rUqQ0gE0ZV9egOT6Uh7o8hHptArL68vOjCb4",
+            client_id: CLIENT.ID,
+            client_secret: CLIENT.SECRET,
             grant_type: "password"
         }
         console.log("LoginForm -> payload", payload)
@@ -25,8 +26,8 @@ const LoginForm = () => {
         const backend = response.googleId ? "google-oauth2" : "facebook";
         const payload = {
             token: response.accessToken,
-            client_id: "5sjHf8d4ddmWFVczDmC9O1eaalI6V4D47ibtnvMs",
-            client_secret: "BRlD1jdoe8R85cUKgIcdKQx2J0qblrgFmOftC5hM7jd4B5iqLCMhE37WkhX5Mq8RKSujkm5BX5S53glmX76xruzkZ176rUqQ0gE0ZV9egOT6Uh7o8hHptArL68vOjCb4",
+            client_id: CLIENT.ID,
+            client_secret: CLIENT.SECRET,
             grant_type: "convert_token",
             backend
         }
