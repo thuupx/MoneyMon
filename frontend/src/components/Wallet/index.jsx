@@ -38,7 +38,7 @@ const WalletComponent = props => {
     return (
         <Col span={16}>
             <Button type="primary" onClick={() => setvisibleCreateModal(!visibleCreateModal)}>Create</Button>
-            <CreateWalletModal visible={visibleCreateModal} setvisible={setvisibleCreateModal} addNewWallet={appendItem} />
+            <CreateWalletModal visible={visibleCreateModal} setVisible={setvisibleCreateModal} addNewWallet={appendItem} />
             {currentWallet && <DetailWallet 
             visible={visibleViewModal} 
             setVisible={setvisibleViewModal} 
@@ -66,7 +66,7 @@ const WalletComponent = props => {
                                 avatar={
                                     <Avatar src="https://img.icons8.com/cute-clipart/64/000000/wallet.png" />
                                 }
-                                title={<h4>{item.wallet_name}</h4>}
+                                title={<p>{item.wallet_name}</p>}
                                 description={item.description}
                             />
                             <Tag color="green">
