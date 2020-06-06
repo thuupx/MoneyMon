@@ -9,8 +9,10 @@ from rest_framework.exceptions import NotFound
 class TransactionsSerializer(serializers.ModelSerializer):
     action = serializers.ChoiceField(choices=Transactions.ACTIONS)
     action_name = serializers.SerializerMethodField()
-    category = serializers.StringRelatedField()
-    from_wallet = serializers.StringRelatedField()
+    # category = serializers.StringRelatedField()
+    # from_wallet = serializers.StringRelatedField()
+    category_name = serializers.StringRelatedField(source='category')
+    from_wallet_name = serializers.StringRelatedField(source='from_wallet')
     user = serializers.PrimaryKeyRelatedField(
         default=serializers.CurrentUserDefault(), read_only=True)
     class Meta:
@@ -19,6 +21,9 @@ class TransactionsSerializer(serializers.ModelSerializer):
 
     def get_action_name(self, obj):
         return obj.get_action_display()
+
+    def get_cat_name(self, obj):
+        return obj.get_category_display()
 
     def create(self, validated_data):
         category = validated_data.get('category') 
