@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getAllUserWallets } from '../../api';
-import { Row, Col, Button, Checkbox, notification, message, Skeleton, Avatar, List, Tag } from 'antd';
+import { Col, Button, Skeleton, Avatar, List, Tag } from 'antd';
 import { formatNumberToMoney } from '../../utils/transaction.util';
 import { EditTwoTone, EyeTwoTone } from "@ant-design/icons";
 import CreateWalletModal from './CreateWalletModal';
@@ -44,7 +44,7 @@ const WalletComponent = props => {
                                 avatar={
                                     <Avatar src="https://img.icons8.com/cute-clipart/64/000000/wallet.png" />
                                 }
-                                title={<a href="#">{item.wallet_name}</a>}
+                                title={<a href="/">{item.wallet_name}</a>}
                                 description={item.description}
                             />
                             <Tag color="green">

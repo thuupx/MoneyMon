@@ -1,0 +1,8 @@
+.site-card-border-less-wrapper {
+    background: #ececec;
+    padding: 30px;
+    float: right;
+  }
+    [data-theme="dark"] .site-card-border-less-wrapper {
+      background: #303030;
+    }

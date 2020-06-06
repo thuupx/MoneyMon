@@ -100,12 +100,14 @@ const ListCategory = props => {
             >
                 <Input.Group >
                     <Input
+                        size="large"
                         addonBefore="Name"
                         type="text"
                         value={catName}
                         onChange={(e) => setCatName(e.target.value)}
                         placeholder="Enter category name" />
                     <Select
+                        size="large"
                         allowClear
                         placeholder="Select category parent"
                         style={{ width: '100%' }}

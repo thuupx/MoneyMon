@@ -19,7 +19,7 @@ export const getAllUserWallets = async () => {
         method: 'get',
         headers: {
             ...headers,
-            authorization: 'Bearer ' + token().access_token
+            authorization: 'Bearer ' + token().access
         }
     });
     const json = await response.json();
@@ -38,7 +38,7 @@ export const createCategory = async body => {
             body: JSON.stringify(body),
             headers: {
                 'Content-Type': 'application/json',
-                authorization: 'Bearer ' + token().access_token
+                authorization: 'Bearer ' + token().access
             }
         });
         const json = await response.json();

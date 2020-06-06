@@ -4,10 +4,13 @@
     "private": true,
     "dependencies": {
         "@ant-design/icons": "^4.0.5",
+        "@antv/g2plot": "^1.1.6",
         "@testing-library/jest-dom": "^4.2.4",
         "@testing-library/react": "^9.3.2",
         "@testing-library/user-event": "^7.1.2",
+        "ant-design-pro": "^1.4.4",
         "antd": "^4.1.0",
+        "bizcharts": "^4.0.4",
         "connected-react-router": "^6.8.0",
         "cross-fetch": "^3.0.4",
         "customize-cra": "^0.2.12",
@@ -22,9 +25,7 @@
         "react": "^16.13.1",
         "react-app-rewired": "^2.1.0",
         "react-dom": "^16.13.1",
-        "react-facebook-login": "^4.1.1",
         "react-getscreen": "^1.1.3",
-        "react-google-login": "^5.1.20",
         "react-redux": "^7.2.0",
         "react-router": "^5.1.2",
         "react-router-dom": "^5.1.2",
@@ -35,7 +36,6 @@
     "scripts": {
         "start": "react-app-rewired start",
         "build": "react-app-rewired build",
-        "lint": "eslint .",
         "test": "react-app-rewired test",
         "eject": "react-app-rewired eject"
     },

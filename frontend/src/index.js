@@ -4,20 +4,16 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import DefaultLayout from './containers/DefaultLayout';
-
+import Dashboard from './containers/Dashboard';
 import configureStore, { history } from './configureStore';
 const store = configureStore();
 ReactDOM.render(
     <Provider store={store}>
-        <DefaultLayout history={history}>
+        <Dashboard history={history}>
             <App />
-        </DefaultLayout>
+        </Dashboard>
     </Provider>,
     document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

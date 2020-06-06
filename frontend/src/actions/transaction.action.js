@@ -1,6 +1,5 @@
 import * as types from '../constants/ActionsTypes';
 import * as httpService from '../api';
-import { success, error } from './alert.action';
 
 export const requestTransactionStarted = () => ({ type: types.REQUEST_STARTED });
 export const requestTransactionSuccess = transactions => ({ type: types.REQUEST_SUCCESS, payload: transactions });
@@ -34,10 +33,7 @@ export const createNewTransaction = body => async dispatch => {
         const newTransaction = await httpService.createTransaction(body);
         console.log("newTransaction", newTransaction);
         dispatch(addTransactionToList(newTransaction));
-        dispatch(success(`Created new transaction`));
-    } catch (err) {
-        console.log("err", err);
+    } catch (error) {
         dispatch(requestTransactionFailure(error.detail));
-        err.detail ? dispatch(error(err.detail)) : dispatch(error(JSON.stringify(err)));
     }
 }

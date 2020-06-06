@@ -7,8 +7,7 @@ function App() {
             <header className="App-header">
                 <p>
                     Lorem me ipsum dolor sit amet, consectet. 
-                </p>
-                
+                </p>              
             </header>
         </div>
     );

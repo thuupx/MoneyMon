@@ -25,14 +25,15 @@ const Transactions = props => {
         : []
 
     return (
-        <Row justify="center" align='middle' style={{ height: 'calc(100vh - 140px)' }}>
+        <Row justify="center" style={{ 
+            height: 'calc(100vh - 140px)' }}>
             <Col >
-                <h1>Transactions</h1>
                 <Button
                     type="primary"
                     icon={<FileAddFilled />}
                     onClick={() => setVisible(true)}
-                >Create Transaction</Button>
+                >Create Transaction
+                </Button>
                 <CreateTransactionModal visible={visible} loading={transactionData.loading} handleOk={handleOk} handleCancel={setVisible} />
                 <Table
                     bordered={true}
@@ -41,8 +42,6 @@ const Transactions = props => {
                     tableLayout='auto'
                 />
             </Col>
-
-
         </Row>
     )
 }

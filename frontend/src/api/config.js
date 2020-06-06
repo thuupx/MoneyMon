@@ -6,8 +6,7 @@ const API_URI = {
 
 }
 const AUTH_URI = {
-    JWT_TOKEN: "auth/token",
-    SOCIAL_TOKEN: "auth/convert-token",
+    JWT: "auth/jwt",
     USER: "auth/users",
 }
 const headers = new Headers();

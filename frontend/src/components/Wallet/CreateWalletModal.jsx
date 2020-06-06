@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Input, Select, Modal, Button, message, notification } from 'antd';
+import { Input, Select, Modal, Button, message, notification, Row, Col } from 'antd';
 import { CURRENCIES } from '../../constants/currency';
 import MoneyInput from '../Transaction/MoneyInput';
 import { createWallet } from '../../api/wallet.api';
@@ -15,7 +15,7 @@ const CreateWalletModal = props => {
     const [balanceCurrency, setBalanceCurrency] = useState('');
     const [loading, setLoading] = useState(false)
     const dispatch = useDispatch();
-    const w_types = ["BASIC", "DIGITAL", "CARD", "CREDIT"]
+    const w_types = ["Basic", "Digital", "Card", "Credit"]
     const handleOk = async () => {
         if (walletName === "") {
             message.error("Please enter a wallet name");
@@ -84,36 +84,49 @@ const CreateWalletModal = props => {
         >
             <Input.Group >
                 <Input
+                    size="large"
                     addonBefore="Name"
                     type="text"
                     value={walletName}
                     onChange={(e) => setWalletName(e.target.value)}
                     placeholder="Enter wallet name" />
                 <Input
-                    addonBefore="Description"
+                    allowClear
+                    size="large"
                     type="text"
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                     placeholder="Wallet description" />
-                <MoneyInput addonBefore="Balance" value={balance} onChange={setBalance} />
-                <Select
+                <MoneyInput  size="large" addonBefore="Balance" value={balance} onChange={setBalance} />
+                <Row 
+                style={{ paddingBottom: '10px' }}
+                gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
+                >
+                <Col span={12}>
+                    <Select
+                    size="large"
                     allowClear
-                    placeholder="Select wallet type"
+                    placeholder="Wallet type"
                     style={{ width: '100%' }}
                     onChange={value => setWalletType(value)}
                 >
                     {w_types.map(type => (<Select.Option value={type} key={type}>{type}</Select.Option>))}
-                </Select>
-                <Select
+                    </Select>
+                </Col>
+                <Col span={12}>
+                    <Select
+                    size="large"
                     showSearch
                     allowClear
-                    placeholder="Select currency"
+                    placeholder="Currency"
                     style={{ width: '100%' }}
                     onChange={value => setBalanceCurrency(value)}
                     defaultValue="VND"
                 >
                     {CURRENCIES.map(currency => (<Select.Option value={currency} key={currency}>{currency}</Select.Option>))}
-                </Select>
+                    </Select>
+                </Col>
+                </Row>
             </Input.Group>
         </Modal>
     )

@@ -5,7 +5,7 @@ export const getAllTransactions = async () => {
     const response = await fetch(`${HOST}/${URI.API_URI.TRANSACTION}`, {
         method: 'get',
         headers: {
-            authorization: 'Bearer ' + token().access_token
+            authorization: 'Bearer ' + token().access
         }
     });
     const json = await response.json();
@@ -27,7 +27,7 @@ export const createTransaction = async (body) => {
         body: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
-            authorization: 'Bearer ' + token().access_token
+            authorization: 'Bearer ' + token().access
         }
     });
     const json = await response.json();

@@ -1,41 +1,16 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined, FacebookFilled, GoogleSquareFilled } from '@ant-design/icons';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../actions/auth.action';
-import FacebookLoginComponent from '../shared/FacebookLogin';
-import GoogleLoginComponent from '../shared/GoogleLogin';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
     const onFinish = user => {
-        const payload = {
-            ...user,
-            client_id: "5sjHf8d4ddmWFVczDmC9O1eaalI6V4D47ibtnvMs",
-            client_secret: "BRlD1jdoe8R85cUKgIcdKQx2J0qblrgFmOftC5hM7jd4B5iqLCMhE37WkhX5Mq8RKSujkm5BX5S53glmX76xruzkZ176rUqQ0gE0ZV9egOT6Uh7o8hHptArL68vOjCb4",
-            grant_type: "password"
-        }
-        console.log("LoginForm -> payload", payload)
-        dispatch(userLogin(payload));
+    console.log("LoginForm -> user", user)
+        dispatch(userLogin(user));
     };
-    const socialLoginCallback = (response) => {
-        //login user
-        console.log("LoginForm:", response);
-        const backend = response.googleId ? "google-oauth2" : "facebook";
-        const payload = {
-            token: response.accessToken,
-            client_id: "5sjHf8d4ddmWFVczDmC9O1eaalI6V4D47ibtnvMs",
-            client_secret: "BRlD1jdoe8R85cUKgIcdKQx2J0qblrgFmOftC5hM7jd4B5iqLCMhE37WkhX5Mq8RKSujkm5BX5S53glmX76xruzkZ176rUqQ0gE0ZV9egOT6Uh7o8hHptArL68vOjCb4",
-            grant_type: "convert_token",
-            backend
-        }
-        dispatch(userLogin(payload));
-    }
-    const onGGFailure = (response) => {
-        console.log("failure gg:", response);
-
-    }
     return (
         <Form
             name="normal_login"
@@ -71,7 +46,7 @@ const LoginForm = () => {
             </Form.Item>
             <Form.Item>
                 <Form.Item name="remember" valuePropName="checked" noStyle>
-                    <Checkbox style={{ color: 'white' }}>Remember me</Checkbox>
+                    <Checkbox style={{color: 'white' }}>Remember me</Checkbox>
                 </Form.Item>
 
                 <a className="login-form-forgot" href="/">
@@ -83,35 +58,6 @@ const LoginForm = () => {
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     Log in
             </Button> Or <Link to='/register'>Register now!</Link>
-            </Form.Item>
-            <Form.Item>
-                <FacebookLoginComponent
-                    callback={socialLoginCallback}
-                    render={props => (
-                        <Button
-                            ghost type="primary"
-                            onClick={props.onClick}
-                            className="login-form-button"
-                            icon={<FacebookFilled />}
-                        >
-                            Log in with Facebook
-                        </Button>)}
-                />
-            </Form.Item>
-            <Form.Item>
-                <GoogleLoginComponent
-                    onSuccess={socialLoginCallback}
-                    onFailure={onGGFailure}
-                    render={props => (
-                        <Button
-                            ghost type="primary"
-                            onClick={props.onClick}
-                            className="login-form-button"
-                            icon={<GoogleSquareFilled />}
-                        >
-                            Log in with Google
-                        </Button>)}
-                />
             </Form.Item>
         </Form>
     );
