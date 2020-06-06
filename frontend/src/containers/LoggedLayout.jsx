@@ -63,7 +63,7 @@ const LoggedLayout = props => {
                             </Menu.Item>
                             <Menu.Item key="2">
                                 <PieChartOutlined />
-                                <span>Reports</span>
+                                <span><Link to="/report" style={{ color: 'white' }}>Reports</Link></span>
                             </Menu.Item>
                             {/* <Divider /> */}
                             <Menu.Item key="3">

@@ -10,6 +10,7 @@ import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import CategoryPage from '../pages/Categories';
 import WalletPage from '../pages/Wallet';
+import ReportPage from '../pages/Report';
 const routes = (
     <Switch>
         <PublicRoute component={Home} path="/" exact />
@@ -20,6 +21,7 @@ const routes = (
         <PrivateRoute path="/transaction" component={Transactions} />
         <PrivateRoute path="/category" component={CategoryPage} />
         <PrivateRoute path="/wallet" component={WalletPage} />
+        <PrivateRoute path="/report" component={ReportPage} />
     </Switch>
 )
 export default routes;

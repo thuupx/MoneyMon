@@ -34,3 +34,15 @@ export const createTransaction = async (body) => {
     if (!json.id) throw json;
     else return json;
 }
+export const getTransactionsFromWallet = async (wallet_id) => {
+    const response = await fetch(`${HOST}/${URI.API_URI.TRANSACTION}?from_wallet=${wallet_id}`, {
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: 'Bearer ' + token().access_token
+        }
+    });
+    const json = await response.json();
+    if (!json) throw json;
+    else return json;
+}
