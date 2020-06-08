@@ -1,0 +1,38 @@
+.trigger {
+  font-size: 25px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.1s;
+}
+
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  margin-right: -5px;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+  box-shadow: 5px 8px 24px 5px rgba(208, 216, 243, 0.6);
+}
+.footer-wrapper {
+  height: 60px;
+  overflow: hidden;
+}
+.footer {
+  height: 100%;
+  font-size: 18px;
+  line-height: 60px;
+  text-align: center;
+  position: relative;
+}
+.dropdown-link {
+  border: black 1px solid;
+  margin-right: 10px;
+}
+
