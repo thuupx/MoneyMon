@@ -6,7 +6,6 @@ const { TabPane } = Tabs;
 const ReportSummary = props => {
     const [list, setList] = useState([]);
     const [initLoading, setInitLoading] = useState(false);
-    const [currentWallet, setCurrentWallet] = useState(null);
     useEffect(() => {
         const fetchWallets = async () => {
             setInitLoading(true);

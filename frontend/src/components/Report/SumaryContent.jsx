@@ -39,6 +39,7 @@ export default function SummaryContent(props) {
                 else sign = "-";
                 return { label: tran.category_name, y: `${sign}${tran.amount}` };
             });
+            
             // const existCat = []
             // listTransactions.forEach(tran => {
             //     if (!existCat.includes(tran["category_name"]))

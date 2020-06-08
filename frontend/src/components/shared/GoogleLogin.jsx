@@ -1,5 +1,5 @@
 import React from 'react';
-import GoogleLogin from 'react-google-login';
+import GoogleLogin from 'react-google-login'; 
 
 export default function GoogleLoginComponent(props) {
     return (

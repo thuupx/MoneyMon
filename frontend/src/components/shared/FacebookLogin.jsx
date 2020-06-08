@@ -9,5 +9,5 @@ export default function FacebookLoginComponent(props) {
             fields="name,email"
             scope="public_profile"
         />
-    )
+    ) 
 }
