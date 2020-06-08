@@ -19,7 +19,7 @@ const Transactions = props => {
 
     useEffect(() => {
         dispatch(getTransactions());
-    }, []);
+    }, [dispatch]);
     const dataSource = transactionData.transactions.length > 0
         ? transactionData.transactions.map(transaction => ({ ...transaction, key: transaction.id }))
         : []

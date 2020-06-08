@@ -2,18 +2,28 @@ from rest_framework.generics import (
     ListCreateAPIView, RetrieveUpdateDestroyAPIView, RetrieveAPIView)
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
+from django.db.models import Q
 from .models import Transactions
 from .serializers import TransactionsSerializer
 
 
 class TransactionsCreateView(viewsets.ModelViewSet):
-    queryset = Transactions.objects.all()
+    # queryset = Transactions.objects.all()
     serializer_class = TransactionsSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
+        from_wallet = self.request.query_params.get('from_wallet')
+        print("from:", from_wallet)
+        category = self.request.query_params.get('category')
         qs = Transactions.objects.filter(user=self.request.user)
-        return qs
+        if from_wallet is None:
+            return qs
+        # elif category is None:
+        #     return qs
+        else:
+            qs = Transactions.objects.filter(Q(user=self.request.user) & Q(from_wallet=from_wallet) )
+            return qs
 
     def perform_create(self, serializer):
         category = self.request.data.get('category')

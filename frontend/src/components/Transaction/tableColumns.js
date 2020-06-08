@@ -36,7 +36,7 @@ const columns = [
     },
     {
         title: 'From Wallet',
-        dataIndex: 'from_wallet',
+        dataIndex: 'from_wallet_name',
         key: 'from_wallet',
     },
     {

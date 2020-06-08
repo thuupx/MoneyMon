@@ -14,3 +14,5 @@ export const CURRENCIES = [
     "UGX", "USD", "USN", "UYI", "UYU", "UZS", "VEF", "VND", "VUV", "WST", "XAF", "XAG", "XAU",
     "XBA", "XBB", "XBC", "XBD", "XCD", "XDR", "XFO", "XFU", "XOF", "XPD", "XPF", "XPT", "XSU",
     "XTS", "XUA", "XXX", "YER", "ZAR", "ZMK", "ZMW", "ZWD", "ZWL", "ZWN"]
+
+export const w_types = ["BASIC", "DIGITAL", "CARD", "CREDIT"]
