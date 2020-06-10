@@ -115,7 +115,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'moneymon_db',
         'USER': 'postgres',
-        'PASSWORD': 'abc123',
+        'PASSWORD': 'vinhHung123',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
