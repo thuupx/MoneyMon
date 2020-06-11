@@ -4,6 +4,7 @@ from wallet.models import Wallet, Categories
 from wallet.serializers import CategoriesSerializer, WalletSerializer
 from rest_framework.utils import model_meta
 from rest_framework.exceptions import NotFound
+from djmoney.money import Money
 
 
 class TransactionsSerializer(serializers.ModelSerializer):
@@ -27,16 +28,23 @@ class TransactionsSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         category = validated_data.get('category') 
-        action = ''#get('action)
+        action = validated_data.get('action') #lấy action từ transaction
+        money_in_transaction = validated_data.get('amount') #lấy tiền từ transaction
         category_id = category if category != None else 1
         wallet_id = validated_data.get('from_wallet')
         found_category = Categories.objects.filter(id=int(category_id))[0]
-        found_wallet = Wallet.objects.filter(id=int(wallet_id))[0]
-        print('---------',found_wallet);
+        found_wallet = Wallet.objects.get(id=int(wallet_id)) #lấy Wallet
+
         if found_category and found_wallet:
-            #tìm found_wallet.balance => update balance dựa theo action
             validated_data['category'] = found_category
             validated_data['from_wallet'] = found_wallet
+            #update dựa trên ví tiền
+            if (action=='IN'):
+                found_wallet.balance.amount += money_in_transaction
+            else:
+                found_wallet.balance.amount -= money_in_transaction
+            
+            found_wallet.save()
             transactions = Transactions.objects.create(**validated_data)
             transactions.save()
             return transactions
