@@ -1,9 +1,11 @@
 import React from 'react';
-import { Form, Input, Tooltip, Checkbox, Button } from 'antd';
+import { Form, Input, Tooltip, Checkbox, Button, message } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../actions/registration.action';
+import ReCAPTCHAv2 from 'react-google-recaptcha';
+
 const formItemLayout = {
     labelCol: {
         xs: {
@@ -38,8 +40,14 @@ const tailFormItemLayout = {
 const RegistrationForm = () => {
     const [form] = Form.useForm();
     const dispatch = useDispatch();
+    const recaptchaRef = React.createRef();
     const onFinish = values => {
         console.log('Received values of form: ', values);
+        const recaptchaValue = recaptchaRef.current.getValue();
+        if(!recaptchaValue) {
+            message.error("Please complete the recaptcha");
+            return;
+        }
         dispatch(registerUser(values));
     };
     return (
@@ -148,6 +156,10 @@ const RegistrationForm = () => {
                     I have read the agreement
                 </Checkbox>
             </Form.Item>
+            <ReCAPTCHAv2
+                ref={recaptchaRef}
+                sitekey="6LcJR6gZAAAAAFG2QTZP9kQ6jWYG5j09OJbro7qR"
+            />
             <Form.Item {...tailFormItemLayout}>
                 <Button type="primary" htmlType="submit">
                     Register

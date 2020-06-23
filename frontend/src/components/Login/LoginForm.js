@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined, FacebookFilled, GoogleSquareFilled } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -7,10 +7,18 @@ import { userLogin } from '../../actions/auth.action';
 import FacebookLoginComponent from '../shared/FacebookLogin';
 import GoogleLoginComponent from '../shared/GoogleLogin';
 import { CLIENT } from '../../constants/client-secret';
+import ReCAPTCHAv2 from 'react-google-recaptcha';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
+    const recaptchaRef = React.createRef();
     const onFinish = user => {
+        const recaptchaValue = recaptchaRef.current.getValue();
+        console.log("LoginForm -> recaptchaValue", recaptchaValue);
+        if(!recaptchaValue) {
+            message.error("Please complete the recaptcha");
+            return;
+        }
         const payload = {
             ...user,
             client_id: CLIENT.ID,
@@ -79,7 +87,10 @@ const LoginForm = () => {
                     Forgot password
             </a>
             </Form.Item>
-
+            <ReCAPTCHAv2
+                ref={recaptchaRef}
+                sitekey="6LcJR6gZAAAAAFG2QTZP9kQ6jWYG5j09OJbro7qR"
+            />
             <Form.Item>
                 <Button type="primary" htmlType="submit" className="login-form-button">
                     Log in
@@ -114,6 +125,7 @@ const LoginForm = () => {
                         </Button>)}
                 />
             </Form.Item>
+
         </Form>
     );
 };
