@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { Row, Col, Statistic, Progress } from 'antd';
 import CanvasJSReact from '../../libs/canvasjs.react';
 import { useEffect } from 'react';
-import filter from 'lodash/filter';
-import mergeWith from 'lodash/mergeWith';
 import { getTransactionsFromWallet } from '../../api';
 import { mergeDupTransactionByCategory } from '../../utils/transaction.util';
-// const CanvasJS = CanvasJSReact.CanvasJS;
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 // const initData = 
