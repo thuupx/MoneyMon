@@ -14,7 +14,8 @@ export const userLogin = userData => async dispatch => {
         localStorage.setItem('token', JSON.stringify(token));
         dispatch(requestLoginSuccess(token));
     } catch (error) {
-        dispatch(requestLoginFailure(error.detail));
+        console.log("error", error);
+        dispatch(requestLoginFailure(error.detail||error.error_description));
     }
 }
 
