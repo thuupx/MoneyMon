@@ -27,11 +27,14 @@ class TransactionsSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         category = validated_data.get('category') 
+        action = ''#get('action)
         category_id = category if category != None else 1
         wallet_id = validated_data.get('from_wallet')
         found_category = Categories.objects.filter(id=int(category_id))[0]
         found_wallet = Wallet.objects.filter(id=int(wallet_id))[0]
+        print('---------',found_wallet);
         if found_category and found_wallet:
+            #tìm found_wallet.balance => update balance dựa theo action
             validated_data['category'] = found_category
             validated_data['from_wallet'] = found_wallet
             transactions = Transactions.objects.create(**validated_data)
