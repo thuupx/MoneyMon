@@ -24,6 +24,7 @@ const FooterDataSource = {
       children: (
           <span>
               Make by <b>MoneyMon</b> with <HeartTwoTone twoToneColor="#eb2f96" />
+               A product from <a  rel="noopener noreferrer" href="http://dungtran.top" target="_blank">Dungtran.top</a>
           </span>
       ),
   },

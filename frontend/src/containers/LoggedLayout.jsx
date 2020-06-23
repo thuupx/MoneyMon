@@ -90,7 +90,10 @@ const LoggedLayout = props => {
             </Content>
             <Footer style={footerStyle}><span>
                 Make by <b>MoneyMon</b> with <HeartTwoTone twoToneColor="#eb2f96" />
-            </span></Footer>
+                
+            </span>
+            <span>A product from <a  rel="noopener noreferrer" href="http://dungtran.top" target="_blank">Dungtran.top</a></span>
+            </Footer>
         </Layout>
 
     )
