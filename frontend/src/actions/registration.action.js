@@ -16,7 +16,7 @@ export const registerUser = registrationData => async (dispatch) => {
             dispatch(requestRegisterSuccess(user));
         }
     } catch (err) {
-        dispatch(error(err.detail));
+        dispatch(error(err.detail||JSON.stringify(err)));
         dispatch(requestRegisterFailure());
     }
 }
