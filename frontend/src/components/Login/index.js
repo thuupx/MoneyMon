@@ -25,10 +25,9 @@ const divStyle = {
 const Login = props => {
     const authData = useSelector(state => state.authReducer);
     return (
-        <Row justify="center" align='middle' style={rowStyle}> >
+        <Row justify="center" align='middle' style={rowStyle}>
             <div style={divStyle}>
                 <Spin spinning={authData.loading} tip="Loading...">
-                    {authData.error ? <Alert type="error" message={authData.error} banner closable /> : null}
                     <Divider orientation="center" style={{ color: 'white' }}>Welcome to MoneyMon!</Divider>
                     <hr />
                     <LoginForm {...props} />
