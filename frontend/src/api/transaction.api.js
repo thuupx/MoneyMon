@@ -46,3 +46,17 @@ export const getTransactionsFromWallet = async (wallet_id) => {
     if (!json) throw json;
     else return json;
 }
+export const exportTransaction = async () => {
+    const response = await fetch(`${HOST}/${URI.API_URI.EXPORT}`, {
+        method: 'get',
+        headers: {
+            'Content-Type': 'application/xlsx',
+            authorization: 'Bearer ' + token().access_token
+        }
+    });
+    const blob = await response.blob();
+    return blob;
+    // const json = await response.json();
+    // if (!json) throw json;
+    // else return json;
+}

@@ -31,7 +31,7 @@ class TransactionsSerializer(serializers.ModelSerializer):
         money_in_transaction = validated_data.get('amount') #lấy tiền từ transaction
         category_id = category if category != None else 1
         wallet_id = validated_data.get('from_wallet')
-        found_category = Categories.objects.filter(id=int(category_id))[0]
+        found_category = Categories.objects.filter(id=int(category_id)).first()
         # found_wallet = Wallet.objects.filter(id=int(wallet_id))[0]
         found_wallet = Wallet.objects.get(id=int(wallet_id)) #lấy Wallet
         if action == 'OUT' and found_wallet.balance.amount < money_in_transaction:

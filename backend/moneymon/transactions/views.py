@@ -4,6 +4,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework import viewsets
 from django.db.models import Q
 from .models import Transactions
+from drf_renderer_xlsx.mixins import XLSXFileMixin
+from drf_renderer_xlsx.renderers import XLSXRenderer
 from .serializers import TransactionsSerializer
 
 
@@ -38,3 +40,12 @@ class TransactionsCreateView(viewsets.ModelViewSet):
             serializer.save(category=category, from_wallet=from_wallet)
         else:
             serializer.save()
+
+class ExportTransactionView(XLSXFileMixin, viewsets.ReadOnlyModelViewSet):
+    serializer_class = TransactionsSerializer
+    renderer_classes = [XLSXRenderer]
+    permission_classes = [IsAuthenticated]
+    filename = 'transaction.xlsx'
+
+    def get_queryset(self):
+        return Transactions.objects.filter(user=self.request.user)

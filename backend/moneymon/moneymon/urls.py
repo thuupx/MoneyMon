@@ -24,6 +24,8 @@ router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'wallet', wallet_views.WalletCreateView, 'wallet')
 router.register(
     r'transaction', transaction_views.TransactionsCreateView, 'transaction')
+router.register(
+    r'export', transaction_views.ExportTransactionView, 'export')
 router.register(r'category', wallet_views.CategoryView, 'category')
 urlpatterns = [
     path(r'admin/', admin.site.urls),
