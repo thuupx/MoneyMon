@@ -1,9 +1,9 @@
-export const HOST = "http://localhost:3000";
+export const HOST = process.env.HOST || "http://localhost:3000";
 const API_URI = {
     TRANSACTION: "api/transaction",
     WALLET: "api/wallet",
     CATEGORY: "api/category",
-
+    EXPORT: "api/export"
 }
 const AUTH_URI = {
     JWT_TOKEN: "auth/token",
