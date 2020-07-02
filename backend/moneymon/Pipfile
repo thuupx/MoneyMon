@@ -17,6 +17,8 @@ django-sslserver = "*"
 django-money = "*"
 social-auth-app-django = "*"
 django-rest-framework-social-oauth2 = "*"
+drf-renderer-xlsx = "*"
+django-environ = "*"
 
 [requires]
 python_version = "3.8"
