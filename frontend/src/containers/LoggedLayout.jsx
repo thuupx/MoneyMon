@@ -49,7 +49,8 @@ const LoggedLayout = props => {
                     <Sider collapsible
                         collapsed={collapsed}
                         onCollapse={onCollapse}
-                        className="site-layout-background" width={200}
+                        className="site-layout-background"
+                        breakpoint="xs"
                     >
                         <Menu
                             defaultSelectedKeys={['1']}
@@ -80,7 +81,7 @@ const LoggedLayout = props => {
                                 }
                             >
                                 <Menu.Item key="day">Day</Menu.Item>
-                                <Menu.Item key="week">Week</Menu.Item>
+                                <Menu.Item key="week"><Link to="/statistic">Week</Link></Menu.Item>
                                 <Menu.Item key="month">Month</Menu.Item>
                             </SubMenu>
                         </Menu>
@@ -90,9 +91,9 @@ const LoggedLayout = props => {
             </Content>
             <Footer style={footerStyle}><span>
                 Make by <b>MoneyMon</b> with <HeartTwoTone twoToneColor="#eb2f96" />
-                
+
             </span>
-            <span>A product from <a  rel="noopener noreferrer" href="http://dungtran.top" target="_blank">Dungtran.top</a></span>
+                <span>A product from <a rel="noopener noreferrer" href="http://dungtran.top" target="_blank">Dungtran.top</a></span>
             </Footer>
         </Layout>
 

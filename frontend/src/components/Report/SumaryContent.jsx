@@ -74,7 +74,7 @@ export default function SummaryContent(props) {
         setDataPoints([...newDataPoints, ...dataPointsMerged, { y: used, label: "Số dư" }]);
     }, [transactionsWallet])
     return (
-        <Row>
+        <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
             <Col span={12}>
                 <h1>All transactions by category from wallet {wallet.wallet_name}</h1>
                 <CanvasJSChart options={setOptions(dataPoints)} />

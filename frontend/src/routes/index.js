@@ -1,16 +1,17 @@
-import React from 'react';
-import Home from '../pages/Home';
-import { Switch } from 'react-router';
-import Login from '../components/Login';
-import App from '../App';
-import Register from '../components/Register';
-import DashboardPage from '../pages/Dashboard';
-import Transactions from '../components/Transaction';
-import PublicRoute from './PublicRoute';
-import PrivateRoute from './PrivateRoute';
-import CategoryPage from '../pages/Categories';
-import WalletPage from '../pages/Wallet';
-import ReportPage from '../pages/Report';
+import React from "react";
+import Home from "../pages/Home";
+import { Switch } from "react-router";
+import Login from "../components/Login";
+import App from "../App";
+import Register from "../components/Register";
+import DashboardPage from "../pages/Dashboard";
+import Transactions from "../components/Transaction";
+import PublicRoute from "./PublicRoute";
+import PrivateRoute from "./PrivateRoute";
+import CategoryPage from "../pages/Categories";
+import WalletPage from "../pages/Wallet";
+import ReportPage from "../pages/Report";
+import StatisticPage from "../pages/Statistic";
 const routes = (
     <Switch>
         <PublicRoute component={Home} path="/" exact />
@@ -22,6 +23,7 @@ const routes = (
         <PrivateRoute path="/category" component={CategoryPage} />
         <PrivateRoute path="/wallet" component={WalletPage} />
         <PrivateRoute path="/report" component={ReportPage} />
+        <PrivateRoute path="/statistic" component={StatisticPage} />
     </Switch>
-)
+);
 export default routes;
