@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Wallet, Categories
-
+from data_seeder.admin import DataGeneratorAdmin
 
 class WalletAdmin(admin.ModelAdmin):
     pass
@@ -8,4 +8,4 @@ class WalletAdmin(admin.ModelAdmin):
 
 models = [Wallet, Categories]
 
-admin.site.register(models, WalletAdmin)
+admin.site.register(models, DataGeneratorAdmin)

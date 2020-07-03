@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'social_django',
     'rest_framework_social_oauth2',
+    'django_seed',
+    'data_seeder'
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -125,6 +127,10 @@ DATABASES = {
         "HOST": os.environ.get("SQL_HOST", "127.0.0.1"),
         "PORT": os.environ.get("SQL_PORT", "5432"),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': 'moneymon_db',
+    # }
 }
 
 

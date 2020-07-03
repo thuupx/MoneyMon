@@ -25,6 +25,8 @@ router.register(r'wallet', wallet_views.WalletCreateView, 'wallet')
 router.register(
     r'transaction', transaction_views.TransactionsCreateView, 'transaction')
 router.register(
+    r'statistic', transaction_views.TransactionsViewStatistic, 'transaction')
+router.register(
     r'export', transaction_views.ExportTransactionView, 'export')
 router.register(r'category', wallet_views.CategoryView, 'category')
 urlpatterns = [

@@ -19,6 +19,8 @@ social-auth-app-django = "*"
 django-rest-framework-social-oauth2 = "*"
 drf-renderer-xlsx = "*"
 django-environ = "*"
+django-seed = "*"
+django-data-seeder = "*"
 
 [requires]
 python_version = "3.8"

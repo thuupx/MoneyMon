@@ -8,6 +8,7 @@ from drf_renderer_xlsx.mixins import XLSXFileMixin
 from drf_renderer_xlsx.renderers import XLSXRenderer
 from .serializers import TransactionsSerializer
 
+import datetime
 
 class TransactionsCreateView(viewsets.ModelViewSet):
     # queryset = Transactions.objects.all()
@@ -40,6 +41,26 @@ class TransactionsCreateView(viewsets.ModelViewSet):
             serializer.save(category=category, from_wallet=from_wallet)
         else:
             serializer.save()
+
+class TransactionsViewStatistic(viewsets.ReadOnlyModelViewSet):
+    serializer_class = TransactionsSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_queryset(self):
+        date_str = self.request.query_params.get('date') # YYYY-MM-DD
+        start_date = self.request.query_params.get('start_date')
+        end_date = self.request.query_params.get('end_date')
+        format_str = '%Y-%m-%d'
+        if date_str:
+            date = datetime.datetime.strptime(date_str, format_str)
+            qs = Transactions.objects.filter(user=self.request.user, created_at__date=date.date())
+        elif start_date is not None and end_date is not None:
+            start = datetime.datetime.strptime(start_date, format_str).date()
+            end = datetime.datetime.strptime(end_date, format_str).date()
+            qs = Transactions.objects.filter(user=self.request.user,created_at__date__range=(start, end))
+        else:
+            qs = Transactions.objects.filter(user=self.request.user)
+        return qs
 
 class ExportTransactionView(XLSXFileMixin, viewsets.ReadOnlyModelViewSet):
     serializer_class = TransactionsSerializer
