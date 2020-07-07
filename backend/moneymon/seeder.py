@@ -12,16 +12,17 @@ from users.models import User
 wallet_ids = Wallet.objects.all()#.values_list('id', flat=True)
 categories_ids = Categories.objects.all()#.values_list('id',flat=True)
 user_ids = User.objects.all()#.values_list('id', flat=True)
+user = User.objects.filter(id=14).first()
 actions = ['IN','OUT']
 
-seeder.add_entity(Transactions, 10, {
+seeder.add_entity(Transactions, 50, {
     'name': lambda x: 'transaction_'+ seeder.faker.name(),
     'amount': lambda x: random.randint(10**4,10**6), # lambda x: seeder.faker.email(),
     'action': lambda x: random.choice(actions),
     'category': lambda x: (random.choice(categories_ids)),
     'from_wallet': lambda x:(random.choice(wallet_ids)),
     'created_at': lambda x: seeder.faker.date_time_this_year(),
-    'user': lambda x: (random.choice(user_ids))
+    'user': lambda x: user #(random.choice(user_ids))
 })
 
 inserted_pks = seeder.execute()
