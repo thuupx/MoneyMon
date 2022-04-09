@@ -17,7 +17,7 @@
         "history": "^4.10.1",
         "less": "^3.9.0",
         "less-loader": "^4.1.0",
-        "moment": "^2.27.0",
+        "moment": "^2.29.2",
         "moment-range": "^4.0.2",
         "rc-banner-anim": "^2.2.2",
         "rc-queue-anim": "^1.6.12",
